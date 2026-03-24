@@ -169,9 +169,9 @@ export default function LandingPage() {
           <div className="flex items-center gap-6 text-sm text-navy/60">
             <a href="mailto:contact@easy-ai-solutions.ch" className="hover:text-navy transition-colors">contact@easy-ai-solutions.ch</a>
             <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-            <a href="#" className="hover:text-navy transition-colors">Mentions légales</a>
+            <a href="/mentions-legales" className="hover:text-navy transition-colors">Mentions légales</a>
             <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-            <a href="#" className="hover:text-navy transition-colors">Politique de confidentialité (RGPD)</a>
+            <a href="/politique-de-confidentialite" className="hover:text-navy transition-colors">Politique de confidentialité (RGPD)</a>
           </div>
         </div>
       </footer>
