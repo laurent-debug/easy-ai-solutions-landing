@@ -1,0 +1,90 @@
+ Brief Développeur Web — Easy AI Solutions
+Landing Page · Version 1.0
+
+🎯 Objectif de la page
+Convaincre des propriétaires de micro-entreprises (1 à 4 personnes) de réserver un appel découverte gratuit de 30 minutes avec le fondateur. Une seule action, un seul bouton, un seul objectif.
+
+🏢 L'entreprise
+Nom : Easy AI Solutions
+Fondateur : [Ton prénom + nom]
+Langue : Français
+Marché cible : Micro-entreprises de 1 à 4 personnes, tous secteurs confondus — artisans, consultants, indépendants, petits commerces
+Positionnement : Un guide humain qui aide les petites entreprises à comprendre et utiliser l'IA concrètement, sans jargon technique, sans perte de temps
+Histoire du fondateur : Lui-même propriétaire d'une micro-entreprise (fermentation de légumes, 150k CHF/an), il a passé des heures à chercher comment utiliser l'IA efficacement. Il a trouvé. Maintenant il partage ce savoir directement avec d'autres entrepreneurs comme lui.
+
+💡 Message central
+
+"L'IA peut transformer votre quotidien — mais vous n'avez pas le temps de tout tester. Moi si."
+
+
+🗂️ Structure de la page (ordre exact)
+1. Header / Hero
+
+Logo : Easy AI Solutions (typographie simple et propre, pas de logo complexe pour l'instant)
+Titre principal (H1) : "Gagnez du temps avec l'IA — sans vous perdre dedans"
+Sous-titre : "J'aide les micro-entreprises à découvrir et utiliser les bons outils IA en 1 session. Concret, guidé, sans jargon."
+Bouton CTA (call to action) : 👉 Réserver mon appel gratuit de 30 min
+Ton visuel : Minimaliste, chaleureux, professionnel mais accessible. Pas de robots, pas de science-fiction. Des vraies personnes qui travaillent.
+
+
+2. Le problème (section courte)
+Titre : "Vous vous reconnaissez ?"
+3 points courts avec icônes :
+
+✅ Vous avez entendu parler de ChatGPT, mais vous ne savez pas par où commencer
+✅ Vous n'avez pas le temps de tester des dizaines d'outils
+✅ Vous voulez aller droit au but — savoir ce qui marche pour VOTRE business
+
+
+3. Ce que vous obtenez
+Titre : "Un appel, des résultats concrets"
+Présenter le parcours en 3 étapes simples :
+Étape 1 — On identifie vos vrais besoins (30 min, gratuit)
+Un appel découverte pour comprendre votre activité, vos défis et vos objectifs.
+Étape 2 — Je vous guide vers les bons outils
+Une session personnalisée (forfait fixe : 300 CHF) où on travaille ensemble : démonstration, création de prompts, mise en pratique immédiate.
+Étape 3 — Vous repartez avec des outils qui fonctionnent
+Pas de théorie. Des outils que vous savez utiliser, adaptés à votre réalité.
+
+4. Qui je suis (section About courte)
+Titre : "Pourquoi me faire confiance ?"
+Texte court (3-4 lignes max) :
+"Je suis moi-même entrepreneur. J'ai géré une micro-entreprise et j'ai cherché — souvent trop longtemps — comment l'IA pouvait m'aider concrètement. Aujourd'hui je vous évite ce chemin. Je ne vends pas de logiciel. Je partage ce qui marche vraiment."
+Photo du fondateur (authentique, pas trop formelle — sourire, contexte de travail réel).
+
+5. CTA final
+Titre : "Prêt à gagner du temps ?"
+Sous-titre : "L'appel est gratuit. 30 minutes. Sans engagement."
+Bouton : 👉 Réserver mon appel gratuit
+
+6. Footer minimal
+
+Nom : Easy AI Solutions
+Email de contact
+Mention légale simple
+Lien vers politique de confidentialité (RGPD)
+
+
+🎨 Direction visuelle
+ÉlémentRecommandationCouleursBlanc + une couleur principale (bleu foncé ou vert sauge) + une couleur d'accent chaud (orange ou jaune) pour les boutons CTATypographieSans-serif moderne — Inter, Poppins, ou equivalentTonHumain, direct, chaleureux. Pas corporate.ImagesPhotos authentiques du fondateur. Pas de stock photos génériques.Mobile100% responsive — priorité mobile
+
+⚙️ Fonctionnalités requises
+
+Bouton de réservation : Intégrer Calendly (ou equivalent) pour la prise de rendez-vous automatique
+Formulaire de contact : Simple — prénom, email, message
+Analytics : Google Analytics ou Plausible (RGPD-friendly)
+Hébergement : Simple et rapide — Webflow, Framer, ou WordPress selon préférence du dev
+Domaine : Déjà acquis par le fondateur
+
+
+❌ Ce qu'on ne veut PAS
+
+Pas de chatbot
+Pas de pop-ups agressifs
+Pas de jargon tech (pas de "machine learning", "LLM", "neural networks")
+Pas de page complexe avec 10 sections — rester simple et direct
+Pas de faux avis clients (pas encore de témoignages — on les ajoutera après les premières sessions)
+
+
+📅 Livrable attendu
+Une landing page une seule page, rapide à charger, optimisée mobile, avec un seul objectif : faire cliquer sur "Réserver mon appel gratuit."
