@@ -104,10 +104,14 @@ export default function LandingPage() {
       <section className="py-24 bg-navy text-white px-6 lg:px-8">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
           <div className="w-full md:w-1/3 aspect-square relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 shadow-2xl">
-            {/* L'image sera intégrée par l'utilisateur plus tard, on place un placeholder élégant */}
-            <div className="absolute inset-0 flex items-center justify-center text-white/20 font-medium text-lg bg-gradient-to-br from-white/5 to-transparent">
-              [Photo de Laurent]
-            </div>
+            <Image 
+              src="/laurent-portrait.webp" 
+              alt="Laurent Cornu - Easy AI Solutions" 
+              fill 
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              priority
+            />
           </div>
           <div className="flex-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">Pourquoi me faire confiance ?</h2>
