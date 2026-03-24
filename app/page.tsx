@@ -108,7 +108,7 @@ export default function LandingPage() {
               src="/laurent-portrait.webp" 
               alt="Laurent Cornu - Easy AI Solutions" 
               fill 
-              className="object-cover"
+              className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 33vw"
               priority
             />
