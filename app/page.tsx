@@ -103,7 +103,7 @@ export default function LandingPage() {
       {/* À PROPOS */}
       <section className="py-24 bg-navy text-white px-6 lg:px-8">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
-          <div className="w-full md:w-1/3 aspect-square relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 shadow-2xl">
+          <div className="w-full md:w-1/3 aspect-[4/5] relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 shadow-2xl">
             <Image 
               src="/laurent-portrait.webp" 
               alt="Laurent Cornu - Easy AI Solutions" 
