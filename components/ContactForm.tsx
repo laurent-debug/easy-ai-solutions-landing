@@ -1,10 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { supabase } from '@/lib/supabase'
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({ firstName: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ PRENOM: '', EMAIL: '', MESSAGE: '' })
   const [status, setStatus] = useState<'IDLE' | 'LOADING' | 'SUCCESS' | 'ERROR'>('IDLE')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -12,45 +11,33 @@ export default function ContactForm() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = (e: React.FormEvent) => {
     setErrorMessage('')
 
     // Validation
-    if (!formData.firstName.trim()) {
+    if (!formData.PRENOM.trim()) {
       setErrorMessage("Le prénom est obligatoire")
+      e.preventDefault()
       return
     }
-    if (!isValidEmail(formData.email)) {
+    if (!isValidEmail(formData.EMAIL)) {
       setErrorMessage("Format d'email invalide")
+      e.preventDefault()
       return
     }
-    if (!formData.message.trim()) {
+    if (!formData.MESSAGE.trim()) {
       setErrorMessage("Le message est obligatoire")
+      e.preventDefault()
       return
     }
 
+    // Le formulaire est valide, on laisse le navigateur soumettre vers l'iframe
     setStatus('LOADING')
+  }
 
-    try {
-      const { error } = await supabase
-        .from('ContactRequest')
-        .insert([
-          {
-            firstName: formData.firstName,
-            email: formData.email,
-            message: formData.message,
-            status: 'PENDING',
-          }
-        ])
-
-      if (error) throw error
-      
+  const handleIframeLoad = () => {
+    if (status === 'LOADING') {
       setStatus('SUCCESS')
-    } catch (err: any) {
-      console.error(err)
-      setErrorMessage("Erreur système, veuillez réessayer")
-      setStatus('ERROR')
     }
   }
 
@@ -67,56 +54,91 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label htmlFor="firstName" className="block text-sm font-medium text-navy/80 mb-1">Prénom</label>
-        <input
-          type="text"
-          id="firstName"
-          value={formData.firstName}
-          onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all"
-          placeholder="Votre prénom"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-navy/80 mb-1">Email</label>
-        <input
-          type="email"
-          id="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all"
-          placeholder="vous@exemple.com"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-navy/80 mb-1">Message</label>
-        <textarea
-          id="message"
-          rows={4}
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all resize-y"
-          placeholder="Comment puis-je vous aider ?"
-        />
-      </div>
-
-      {errorMessage && (
-        <div className="text-red-500 text-sm font-medium bg-red-50 p-3 rounded-lg border border-red-100">
-          {errorMessage}
-        </div>
-      )}
-
-      <button
-        type="submit"
-        disabled={status === 'LOADING'}
-        className="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-4 px-8 rounded-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-accent/20"
+    <>
+      <form 
+        id="sib-form" 
+        method="POST" 
+        action="https://f33d21fe.sibforms.com/serve/MUIFADqWXNVpI5mf5PyuZ5p1CSRpGT8jXl70mCQzDON6DFZwEEeI-33_r_Mmd4a3Mamzyyc6Quxc41tgU6ghDAnpGm-va6xy_pdNRMn7MTqJ9XChpY8Rha-beza1onddPlmEYIqs2X2IfNe11r-0V3OKSdEt8z4wdCH41q3D1Z1GqxRxdtVakHqN-2cn7QFB8G2m_jMVBJjqxC0y"
+        target="hidden_iframe"
+        onSubmit={handleSubmit} 
+        className="space-y-6"
       >
-        {status === 'LOADING' ? 'Envoi en cours...' : 'Envoyer mon message'}
-      </button>
-    </form>
+        <div>
+          <label htmlFor="PRENOM" className="block text-sm font-medium text-navy/80 mb-1">Prénom</label>
+          <input
+            type="text"
+            id="PRENOM"
+            name="PRENOM"
+            value={formData.PRENOM}
+            onChange={(e) => setFormData({ ...formData, PRENOM: e.target.value })}
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all"
+            placeholder="Votre prénom"
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="EMAIL" className="block text-sm font-medium text-navy/80 mb-1">Email</label>
+          <input
+            type="email"
+            id="EMAIL"
+            name="EMAIL"
+            value={formData.EMAIL}
+            onChange={(e) => setFormData({ ...formData, EMAIL: e.target.value })}
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all"
+            placeholder="vous@exemple.com"
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="MESSAGE" className="block text-sm font-medium text-navy/80 mb-1">Message</label>
+          <textarea
+            id="MESSAGE"
+            name="MESSAGE"
+            rows={4}
+            value={formData.MESSAGE}
+            onChange={(e) => setFormData({ ...formData, MESSAGE: e.target.value })}
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all resize-y"
+            placeholder="Comment puis-je vous aider ?"
+            required
+          />
+        </div>
+
+        {/* Honeypot Field (Invisible pour les humains, rempli par les bots) */}
+        <input 
+          type="text" 
+          name="email_address_check" 
+          value="" 
+          style={{ display: 'none', position: 'absolute', left: '-5000px' }} 
+          readOnly 
+        />
+        <input type="hidden" name="locale" value="fr" />
+
+        {errorMessage && (
+          <div className="text-red-500 text-sm font-medium bg-red-50 p-3 rounded-lg border border-red-100">
+            {errorMessage}
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={status === 'LOADING'}
+          className="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-4 px-8 rounded-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-accent/20"
+        >
+          {status === 'LOADING' ? 'Envoi en cours...' : 'Envoyer mon message'}
+        </button>
+      </form>
+
+      {/* Iframe cachée pour intercepter la réponse de Brevo et rester sur la page */}
+      <iframe 
+        name="hidden_iframe" 
+        id="hidden_iframe" 
+        style={{ display: 'none' }} 
+        onLoad={handleIframeLoad}
+      />
+    </>
   )
 }
+
+
