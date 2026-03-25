@@ -101,9 +101,9 @@
       return;
     }
 
-    // Envoi direct vers Formspree pour recevoir le témoignage par email
+    // Envoi direct vers FormSubmit.co pour recevoir le témoignage par email
     try {
-      await fetch('https://formspree.io/f/mvzvpvqv', {
+      await fetch('https://formsubmit.co/ajax/samamuse.ai@gmail.com', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -111,11 +111,12 @@
         },
         body: JSON.stringify({
           "Client": "Désiré",
-          "Avant": avant,
-          "Après": apres,
-          "Phrase": phrase,
+          "Question_1_Avant": avant,
+          "Question_2_Après": apres,
+          "Question_3_Phrase": phrase,
           "Note": rating + "/5",
-          "Consentement": consent
+          "Consentement": consent,
+          "_subject": "Nouveau témoignage : Désiré (Easy AI Solutions)"
         }),
       });
     } catch (e) {
