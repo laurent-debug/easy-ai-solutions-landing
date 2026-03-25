@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Témoignage — Easy AI Solutions</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 2rem 1rem; }
+  .card { background: #fff; border-radius: 14px; border: 1px solid #e5e7eb; padding: 2rem; max-width: 520px; width: 100%; }
+  .badge { display: inline-block; background: #EFF6FF; color: #1D4ED8; font-size: 12px; padding: 3px 10px; border-radius: 6px; margin-bottom: 14px; }
+  h2 { font-size: 16px; font-weight: 600; color: #111; margin-bottom: 4px; }
+  .intro { font-size: 13px; color: #6B7280; line-height: 1.6; margin-bottom: 1.5rem; }
+  .field { margin-bottom: 1.25rem; }
+  label { display: block; font-size: 13px; color: #374151; margin-bottom: 6px; font-weight: 500; }
+  input, textarea, select {
+    width: 100%; padding: 9px 12px; font-size: 14px;
+    border: 1px solid #D1D5DB; border-radius: 8px;
+    background: #fff; color: #111; font-family: inherit; resize: vertical;
+  }
+  textarea { min-height: 90px; line-height: 1.6; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: #6366F1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
+  .stars { display: flex; gap: 6px; }
+  .stars span { font-size: 28px; cursor: pointer; color: #D1D5DB; transition: color .15s; user-select: none; }
+  .stars span.on { color: #F59E0B; }
+  .btn { width: 100%; padding: 11px; background: #1a2e4a; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background .15s; margin-top: 0.5rem; }
+  .btn:hover { background: #243d60; }
+  .success { display: none; text-align: center; padding: 2rem 0; }
+  .success .check { font-size: 40px; margin-bottom: 12px; }
+  .success h3 { font-size: 16px; font-weight: 600; color: #111; margin-bottom: 6px; }
+  .success p { font-size: 13px; color: #6B7280; line-height: 1.6; }
+  .result-block { margin-top: 1.5rem; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 1rem; font-size: 13px; color: #374151; line-height: 1.8; text-align: left; }
+  .result-block strong { color: #111; }
+</style>
+</head>
+<body>
+<div class="card">
+  <span class="badge">Témoignage client</span>
+  <h2>Bonjour Désiré,</h2>
+  <p class="intro">Merci pour ta confiance. Ça m'aiderait beaucoup si tu pouvais partager ton expérience en 2 minutes — c'est précieux pour moi et pour les futurs clients.</p>
+
+  <div id="the-form">
+    <div class="field">
+      <label>Avant notre session, quel était ton principal défi ?</label>
+      <textarea id="f-avant" placeholder="Ex. je savais que ChatGPT existait, mais je l'utilisais comme un jouet..."></textarea>
+    </div>
+    <div class="field">
+      <label>Qu'est-ce que tu as pu faire concrètement après ?</label>
+      <textarea id="f-apres" placeholder="Ex. j'ai commencé à créer du contenu LinkedIn pour mon bureau d'ingénierie..."></textarea>
+    </div>
+    <div class="field">
+      <label>En une phrase, comment tu décrirais Easy AI Solutions à un collègue ?</label>
+      <input type="text" id="f-phrase" placeholder="Ex. Laurent te montre directement ce qui marche pour ton activité."/>
+    </div>
+    <div class="field">
+      <label>Note globale</label>
+      <div class="stars" id="stars">
+        <span data-v="1">★</span>
+        <span data-v="2">★</span>
+        <span data-v="3">★</span>
+        <span data-v="4">★</span>
+        <span data-v="5">★</span>
+      </div>
+    </div>
+    <div class="field">
+      <label>Puis-je utiliser ton témoignage sur mon site ?</label>
+      <select id="f-consent">
+        <option value="">-- Choisir --</option>
+        <option value="Oui, avec prénom et métier">Oui, avec mon prénom et mon métier</option>
+        <option value="Oui, anonyme">Oui, mais de façon anonyme</option>
+        <option value="Non">Non, usage interne seulement</option>
+      </select>
+    </div>
+    <button class="btn" onclick="submitForm()">Envoyer mon témoignage</button>
+  </div>
+
+  <div class="success" id="success-msg">
+    <div class="check">✓</div>
+    <h3>Merci Désiré !</h3>
+    <p>Ton témoignage est précieux.<br>À très bientôt.</p>
+    <div class="result-block" id="result-block"></div>
+  </div>
+</div>
+
+<script>
+  let rating = 0;
+  document.querySelectorAll('.stars span').forEach(s => {
+    s.addEventListener('click', () => {
+      rating = +s.dataset.v;
+      document.querySelectorAll('.stars span').forEach(x => x.classList.toggle('on', +x.dataset.v <= rating));
+    });
+  });
+
+  async function submitForm() {
+    const avant = document.getElementById('f-avant').value.trim();
+    const apres = document.getElementById('f-apres').value.trim();
+    const phrase = document.getElementById('f-phrase').value.trim();
+    const consent = document.getElementById('f-consent').value;
+    if (!avant || !apres || !phrase || !rating || !consent) {
+      alert("Merci de remplir tous les champs avant d'envoyer.");
+      return;
+    }
+
+    // Call our new API route to save the data
+    try {
+      await fetch('/api/temoignage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ avant, apres, phrase, rating, consent }),
+      });
+    } catch (e) {
+      console.error('Erreur lors de la sauvegarde:', e);
+    }
+
+    document.getElementById('the-form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+    document.getElementById('result-block').innerHTML =
+      '<strong>Avant :</strong> ' + avant + '<br><br>' +
+      '<strong>Après :</strong> ' + apres + '<br><br>' +
+      '<strong>En une phrase :</strong> ' + phrase + '<br><br>' +
+      '<strong>Note :</strong> ' + rating + '/5<br>' +
+      '<strong>Consentement :</strong> ' + consent;
+  }
+</script>
+</body>
+</html>
