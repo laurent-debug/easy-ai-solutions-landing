@@ -101,15 +101,25 @@
       return;
     }
 
-    // Call our new API route to save the data
+    // Envoi direct vers Formspree pour recevoir le témoignage par email
     try {
-      await fetch('/api/temoignage', {
+      await fetch('https://formspree.io/f/mvzvpvqv', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ avant, apres, phrase, rating, consent }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "Client": "Désiré",
+          "Avant": avant,
+          "Après": apres,
+          "Phrase": phrase,
+          "Note": rating + "/5",
+          "Consentement": consent
+        }),
       });
     } catch (e) {
-      console.error('Erreur lors de la sauvegarde:', e);
+      console.error("Erreur lors de l'envoi du témoignage:", e);
     }
 
     document.getElementById('the-form').style.display = 'none';
