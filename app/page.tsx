@@ -3,7 +3,7 @@ import ContactForm from '@/components/ContactForm'
 import Image from 'next/image'
 
 export default function LandingPage() {
-  const calendlyUrl = "https://calendly.com/" // À remplacer par le vrai lien de réservation
+  const calendlyUrl = "https://calendly.com/laurent-easy-ai-solutions/30min"
 
   return (
     <main className="min-h-screen bg-white text-navy selection:bg-sage/30">
