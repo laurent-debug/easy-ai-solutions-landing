@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /temoignage-desire.html
+
+Sitemap: https://www.easy-ai-solutions.ch/sitemap.xml
