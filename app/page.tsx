@@ -1,6 +1,5 @@
 import { CheckCircle2, Clock, Target, Search, Compass, Wrench } from 'lucide-react'
 import ContactForm from '@/components/ContactForm'
-import LeadMagnet from '@/components/LeadMagnet'
 import Image from 'next/image'
 
 export default function LandingPage() {
@@ -28,9 +27,6 @@ export default function LandingPage() {
           <div className="absolute inset-0 rounded-2xl ring-2 ring-transparent group-hover:ring-accent/50 transition-all opacity-0 group-hover:opacity-100 scale-100 group-hover:scale-105 pointer-events-none"></div>
         </a>
       </section>
-
-      {/* LEAD MAGNET */}
-      <LeadMagnet />
 
       {/* LE PROBLÈME */}
       <section className="py-24 bg-slate-50 border-y border-slate-100 px-6 lg:px-8">
@@ -172,8 +168,6 @@ export default function LandingPage() {
           <div className="font-bold text-navy/90">Easy AI Solutions</div>
           <div className="flex items-center gap-6 text-sm text-navy/60">
             <a href="mailto:contact@easy-ai-solutions.ch" className="hover:text-navy transition-colors">contact@easy-ai-solutions.ch</a>
-            <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-            <a href="/guide-ia-5-heures.pdf" download className="hover:text-navy transition-colors font-medium">🎁 Guide Gratuit</a>
             <span className="w-1 h-1 rounded-full bg-slate-300"></span>
             <a href="/mentions-legales" className="hover:text-navy transition-colors">Mentions légales</a>
             <span className="w-1 h-1 rounded-full bg-slate-300"></span>
