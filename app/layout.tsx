@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     locale: 'fr_CH',
     url: siteUrl,
     siteName: 'Easy AI Solutions',
-    title: 'Easy AI Solutions — Consultant IA pour PME en Suisse romande',
+    title: 'Easy AI Solutions — Consultant IA pour micro-entreprises en Suisse romande',
     description: 'J\'aide les micro-entreprises de Suisse romande à utiliser l\'IA concrètement, en 1 session. Genève, Lausanne, Vaud.',
     images: [
       {

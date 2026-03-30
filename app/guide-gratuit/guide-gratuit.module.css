@@ -198,6 +198,16 @@
   margin-top: 0.2rem;
 }
 
+.honeypotField {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .button {
   width: 100%;
   padding: 15px;
@@ -398,6 +408,10 @@
 
 .brandTag a {
   font-weight: 500;
+}
+
+.hiddenIframe {
+  display: none;
 }
 
 @keyframes pulse {

@@ -8,6 +8,7 @@ import styles from './guide-gratuit.module.css'
 type FormData = {
   prenom: string
   email: string
+  emailAddressCheck: string
 }
 
 type FormErrors = {
@@ -19,6 +20,9 @@ type FormErrors = {
 type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const BREVO_FORM_ACTION =
+  'https://f33d21fe.sibforms.com/serve/MUIFADqWXNVpI5mf5PyuZ5p1CSRpGT8jXl70mCQzDON6DFZwEEeI-33_r_Mmd4a3Mamzyyc6Quxc41tgU6ghDAnpGm-va6xy_pdNRMn7MTqJ9XChpY8Rha-beza1onddPlmEYIqs2X2IfNe11r-0V3OKSdEt8z4wdCH41q3D1Z1GqxRxdtVakHqN-2cn7QFB8G2m_jMVBJjqxC0y'
+const GUIDE_DOWNLOAD_URL = '/guide-ia-5-heures.pdf'
 
 const PILLS = [
   { icon: '✍️', label: 'Rédaction' },
@@ -29,10 +33,13 @@ const PILLS = [
 ]
 
 export default function GuideGratuitPageClient() {
-  const [formData, setFormData] = useState<FormData>({ prenom: '', email: '' })
+  const [formData, setFormData] = useState<FormData>({
+    prenom: '',
+    email: '',
+    emailAddressCheck: '',
+  })
   const [errors, setErrors] = useState<FormErrors>({})
   const [status, setStatus] = useState<SubmitStatus>('idle')
-  const [downloadUrl, setDownloadUrl] = useState('/guide-ia-5-heures.pdf')
 
   const validateForm = () => {
     const nextErrors: FormErrors = {}
@@ -58,7 +65,7 @@ export default function GuideGratuitPageClient() {
 
     setErrors((current) => ({
       ...current,
-      [field]: undefined,
+      [field === 'prenom' || field === 'email' ? field : 'form']: undefined,
       form: undefined,
     }))
 
@@ -67,54 +74,30 @@ export default function GuideGratuitPageClient() {
     }
   }
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     const nextErrors = validateForm()
+
     if (Object.keys(nextErrors).length > 0) {
+      event.preventDefault()
       setErrors(nextErrors)
       setStatus('idle')
       return
     }
 
+    if (formData.emailAddressCheck.trim()) {
+      event.preventDefault()
+      setErrors({})
+      setStatus('success')
+      return
+    }
+
     setErrors({})
     setStatus('loading')
+  }
 
-    try {
-      const response = await fetch('/api/guide-gratuit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          prenom: formData.prenom.trim(),
-          email: formData.email.trim(),
-        }),
-      })
-
-      const result = await response.json().catch(() => null)
-
-      if (!response.ok) {
-        throw new Error(
-          typeof result?.error === 'string'
-            ? result.error
-            : "Impossible d'envoyer votre demande pour le moment."
-        )
-      }
-
-      if (typeof result?.downloadUrl === 'string' && result.downloadUrl.trim()) {
-        setDownloadUrl(result.downloadUrl)
-      }
-
+  const handleIframeLoad = () => {
+    if (status === 'loading') {
       setStatus('success')
-    } catch (error) {
-      setStatus('error')
-      setErrors({
-        form:
-          error instanceof Error
-            ? error.message
-            : "Une erreur est survenue pendant l'envoi du formulaire.",
-      })
     }
   }
 
@@ -165,7 +148,7 @@ export default function GuideGratuitPageClient() {
 
             <div className={styles.successActions}>
               <a
-                href={downloadUrl}
+                href={GUIDE_DOWNLOAD_URL}
                 download
                 className={`${styles.button} ${styles.downloadButton}`}
               >
@@ -180,14 +163,23 @@ export default function GuideGratuitPageClient() {
           </div>
         ) : (
           <>
-            <form className={styles.formArea} onSubmit={handleSubmit} noValidate>
+            <form
+              className={styles.formArea}
+              onSubmit={handleSubmit}
+              method="POST"
+              action={BREVO_FORM_ACTION}
+              target="guide_gratuit_iframe"
+              data-type="subscription"
+              noValidate
+            >
               <div className={styles.formSpacer} aria-hidden="true" />
 
-              <label className={styles.label} htmlFor="prenom">
+              <label className={styles.label} htmlFor="PRENOM">
                 Prénom
               </label>
               <input
-                id="prenom"
+                id="PRENOM"
+                name="PRENOM"
                 type="text"
                 autoComplete="given-name"
                 placeholder="Laurent"
@@ -205,11 +197,12 @@ export default function GuideGratuitPageClient() {
                 </p>
               ) : null}
 
-              <label className={styles.label} htmlFor="email">
+              <label className={styles.label} htmlFor="EMAIL">
                 Email
               </label>
               <input
-                id="email"
+                id="EMAIL"
+                name="EMAIL"
                 type="email"
                 autoComplete="email"
                 placeholder="laurent@monentreprise.ch"
@@ -226,6 +219,26 @@ export default function GuideGratuitPageClient() {
                   {errors.email}
                 </p>
               ) : null}
+
+              <div className={styles.honeypotField} aria-hidden="true">
+                <label htmlFor="email_address_check">Ne pas remplir ce champ</label>
+                <input
+                  id="email_address_check"
+                  name="email_address_check"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.emailAddressCheck}
+                  onChange={(event) =>
+                    handleFieldChange(
+                      'emailAddressCheck',
+                      event.currentTarget.value
+                    )
+                  }
+                />
+              </div>
+
+              <input type="hidden" name="locale" value="fr" />
 
               {errors.form ? (
                 <p className={styles.formError} role="alert">
@@ -247,11 +260,20 @@ export default function GuideGratuitPageClient() {
               </button>
 
               <p className={styles.legal}>
-                Pas de spam. Juste le guide PDF, directement dans ta boîte.
+                Formulaire relié directement à Brevo pour contourner les
+                limitations d&apos;IP changeantes, avec protection anti-bot
+                intégrée.
                 <br />
                 <a href="https://easy-ai-solutions.ch">easy-ai-solutions.ch</a>
               </p>
             </form>
+
+            <iframe
+              name="guide_gratuit_iframe"
+              title="Soumission du formulaire guide gratuit"
+              className={styles.hiddenIframe}
+              onLoad={handleIframeLoad}
+            />
 
             <div className={styles.divider}>
               <hr />
