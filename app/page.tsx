@@ -1,4 +1,4 @@
-import { CheckCircle2, Clock, Target, Search, Compass, Wrench } from 'lucide-react'
+import { CheckCircle2, Clock, Target, Search, Compass, Wrench, Star } from 'lucide-react'
 import ContactForm from '@/components/ContactForm'
 import Image from 'next/image'
 
@@ -96,6 +96,45 @@ export default function LandingPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TÉMOIGNAGE */}
+      <section className="py-24 bg-sage/5 border-y border-sage/10 px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">Ce qu'en pensent mes clients</h2>
+          </div>
+          
+          <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl shadow-sage/5 border border-sage/10 relative">
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-1 bg-white px-5 py-3 rounded-full shadow-md border border-slate-100">
+              {[1, 2, 3, 4].map((i) => (
+                <Star key={i} className="w-5 h-5 fill-[#F59E0B] text-[#F59E0B]" />
+              ))}
+              <Star className="w-5 h-5 text-slate-200" />
+            </div>
+            
+            <blockquote className="text-xl md:text-2xl text-navy/90 text-center font-medium italic mt-6 mb-10 leading-relaxed">
+              « Ça offre de solutions spécifiques pouvant vous aider dans votre carrière et autres. »
+            </blockquote>
+            
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center text-center md:text-left text-base text-navy/80 bg-slate-50 p-6 md:p-8 rounded-2xl mb-8 border border-slate-100">
+              <div className="flex-1">
+                <span className="font-bold text-navy block mb-2 text-sm uppercase tracking-wider opacity-60">Avant notre session</span>
+                « Je savais l'existence de chatgpt mais je ne l'utilisais pas vraiment. »
+              </div>
+              <div className="hidden md:block w-px bg-slate-200"></div>
+              <div className="flex-1">
+                <span className="font-bold text-navy block mb-2 text-sm uppercase tracking-wider opacity-60">Après notre session</span>
+                « J'ai commencé à utiliser pour mon accompagnement professionnel et d'améliorer mon réseau professionnel. »
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <div className="font-bold text-navy text-lg">Désiré</div>
+              <div className="text-sage font-medium mt-1">Travailleur indépendant</div>
+            </div>
           </div>
         </div>
       </section>

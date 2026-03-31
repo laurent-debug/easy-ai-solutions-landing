@@ -9,10 +9,10 @@ const siteUrl = 'https://www.easy-ai-solutions.ch'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Easy AI Solutions — Consultant IA pour PME en Suisse romande',
+    default: 'Easy AI Solutions — L\'IA concrète pour les micro-entreprises',
     template: '%s | Easy AI Solutions',
   },
-  description: 'J\'aide les micro-entreprises et indépendants de Suisse romande à gagner du temps avec l\'IA. 1 session concrète, guidée, sans jargon. Genève, Lausanne, Vaud.',
+  description: 'J\'aide les entrepreneurs de 1 à 4 personnes à gagner du temps avec l\'IA. Pas de jargon, pas de théorie. Une session suffit.',
   keywords: [
     'consultant IA Suisse romande',
     'formation intelligence artificielle Suisse',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     locale: 'fr_CH',
     url: siteUrl,
     siteName: 'Easy AI Solutions',
-    title: 'Easy AI Solutions — Consultant IA pour micro-entreprises en Suisse romande',
-    description: 'J\'aide les micro-entreprises de Suisse romande à utiliser l\'IA concrètement, en 1 session. Genève, Lausanne, Vaud.',
+    title: 'Easy AI Solutions — L\'IA concrète pour les micro-entreprises',
+    description: 'J\'aide les entrepreneurs de 1 à 4 personnes à gagner du temps avec l\'IA. Pas de jargon, pas de théorie. Une session suffit.',
     images: [
       {
         url: '/og-image.jpg',
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Easy AI Solutions — Consultant IA pour PME en Suisse romande',
-    description: 'J\'aide les micro-entreprises de Suisse romande à utiliser l\'IA concrètement, en 1 session.',
+    title: 'Easy AI Solutions — L\'IA concrète pour les micro-entreprises',
+    description: 'J\'aide les entrepreneurs de 1 à 4 personnes à gagner du temps avec l\'IA. Pas de jargon, pas de théorie. Une session suffit.',
     images: ['/og-image.jpg'],
   },
   alternates: {
