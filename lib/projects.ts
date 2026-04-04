@@ -41,7 +41,7 @@ export const projects: Project[] = [
       'Outils d\'inventaire en temps réel'
     ],
     category: 'SaaS Métier',
-    link: 'https://www.atelier-os.easy-ai-solutions.ch',
+    link: 'https://atelier-os.easy-ai-solutions.ch/',
   },
   {
     id: 'notenda',
