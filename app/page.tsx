@@ -137,7 +137,14 @@ export default function LandingPage() {
             
             <div className="text-center">
               <div className="font-bold text-navy text-lg">Désiré</div>
-              <div className="text-sage font-medium mt-1">Ingénieur Génie Civil</div>
+              <div className="text-sage font-medium mt-1">
+                Ingénieur génie civil, fondateur ICOSE
+                <div className="mt-1">
+                  <a href="https://www.icose.ch" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline text-sm font-bold">
+                    www.icose.ch
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
