@@ -1,5 +1,6 @@
 import { CheckCircle2, Clock, Target, Search, Compass, Wrench, Star } from 'lucide-react'
 import ContactForm from '@/components/ContactForm'
+import Portfolio from '@/components/Portfolio'
 import Image from 'next/image'
 
 export default function LandingPage() {
@@ -100,6 +101,9 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* MES RÉALISATIONS */}
+      <Portfolio />
+
       {/* TÉMOIGNAGE */}
       <section className="py-24 bg-sage/5 border-y border-sage/10 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
@@ -133,7 +137,7 @@ export default function LandingPage() {
             
             <div className="text-center">
               <div className="font-bold text-navy text-lg">Désiré</div>
-              <div className="text-sage font-medium mt-1">Travailleur indépendant</div>
+              <div className="text-sage font-medium mt-1">Ingénieur Génie Civil</div>
             </div>
           </div>
         </div>
