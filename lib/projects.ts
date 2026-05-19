@@ -62,17 +62,17 @@ export const projects: Project[] = [
   {
     id: 'prompteur-pop',
     title: 'Prompteur Pop',
-    subtitle: 'Prompteur mobile pour videos YouTube',
-    description: 'Un petit outil de lecture camera avec edition live, segments bouclables, miroir et ligne de focus personnalisable.',
-    fullDescription: 'Prompteur Pop transforme un script colle ou importe en prompteur fluide pour enregistrer des videos. Les textes ne sont pas sauvegardes, les segments peuvent etre repetes en boucle, et les reglages restent visibles pendant les ajustements.',
+    subtitle: 'Prompteur mobile pour vidéos YouTube',
+    description: 'Un petit outil de lecture caméra avec édition live, segments bouclables, miroir et ligne de focus personnalisable.',
+    fullDescription: 'Prompteur Pop transforme un script collé ou importé en prompteur fluide pour enregistrer des vidéos. Les textes ne sont pas sauvegardés, les segments peuvent être répétés en boucle, et les réglages restent visibles pendant les ajustements.',
     image: '/prompteur-pop.svg',
     features: [
-      'Defilement fluide avec vitesse, taille et interligne reglables',
-      'Edition live du script sans sauvegarde locale',
-      'Segments selectionnables et bouclables pour repeter une prise',
+      'Défilement fluide avec vitesse, taille et interligne réglables',
+      'Édition live du script sans sauvegarde locale',
+      'Segments sélectionnables et bouclables pour répéter une prise',
       'Modes miroir et ligne de focus personnalisable'
     ],
-    category: 'Creation de contenu',
+    category: 'Création de contenu',
     link: '/prompteur',
   }
 ];
