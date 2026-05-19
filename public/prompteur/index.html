@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prompteur Pop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Prompteur Pop">
+          <img src="assets/prompt-pop-mark.svg" alt="" class="brand-mark" />
+          <span>
+            <strong>Prompteur Pop</strong>
+            <small>studio mobile</small>
+          </span>
+        </a>
+
+        <div class="quick-actions" aria-label="Actions rapides">
+          <button class="icon-button" id="resetButton" type="button" title="Revenir au d&eacute;but" aria-label="Revenir au d&eacute;but">
+            &#8634;
+          </button>
+          <button class="icon-button" id="mirrorButton" type="button" title="Mode miroir" aria-label="Activer le mode miroir">
+            &#8644;
+          </button>
+          <button class="icon-button" id="fullscreenButton" type="button" title="Plein &eacute;cran" aria-label="Passer en plein &eacute;cran">
+            &#9974;
+          </button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="reader-panel" aria-label="Prompteur">
+          <div class="stage-frame" id="stageFrame">
+            <div class="countdown" id="countdown" hidden>3</div>
+            <div class="status-strip">
+              <span class="record-light" aria-hidden="true"></span>
+              <span id="runState">Pr&ecirc;t</span>
+              <span id="segmentLabel">Segment -</span>
+              <span id="progressLabel">0%</span>
+            </div>
+            <div class="cue-line" aria-hidden="true"></div>
+            <div class="focus-mask" aria-hidden="true"></div>
+            <div class="reader-window" id="readerWindow" tabindex="0" aria-label="Zone de lecture">
+              <article class="script-output" id="scriptOutput">
+                <p class="empty-state">Collez un script, lancez le d&eacute;filement, gardez le regard cam&eacute;ra.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="transport" aria-label="Contr&ocirc;les de lecture">
+            <button class="primary-action" id="playButton" type="button">
+              <span class="play-glyph" aria-hidden="true">&#9654;</span>
+              <span id="playLabel">Lancer</span>
+            </button>
+            <button class="secondary-action" id="rehearsalButton" type="button">Compte 3s</button>
+            <label class="speed-nudge">
+              <span>Vitesse</span>
+              <input id="speedRange" type="range" min="18" max="160" value="64" />
+              <strong><span id="speedValue">64</span> px/s</strong>
+            </label>
+          </div>
+
+          <div class="segment-transport" aria-label="Boucles de segment">
+            <button class="secondary-action" id="prevSegmentButton" type="button">Segment -</button>
+            <button class="secondary-action loop-action" id="loopButton" type="button">Boucler segment</button>
+            <button class="secondary-action" id="nextSegmentButton" type="button">Segment +</button>
+          </div>
+        </section>
+
+        <aside class="control-panel" aria-label="R&eacute;glages du prompteur">
+          <section class="script-box" aria-labelledby="scriptTitle">
+            <div class="section-heading">
+              <div>
+                <h1 id="scriptTitle">Script</h1>
+                <p class="inline-note">Edition live - memoire off</p>
+              </div>
+              <label class="file-pill">
+                Importer .txt
+                <input id="fileInput" type="file" accept=".txt,text/plain" />
+              </label>
+            </div>
+            <textarea
+              id="scriptInput"
+              spellcheck="true"
+              placeholder="Script de tournage..."
+            ></textarea>
+            <div class="script-actions">
+              <button class="ghost-button" id="sampleButton" type="button">Exemple</button>
+              <button class="ghost-button danger" id="clearButton" type="button">Effacer</button>
+            </div>
+          </section>
+
+          <section class="segments-box" aria-labelledby="segmentsTitle">
+            <div class="section-heading compact-heading">
+              <div>
+                <h2 id="segmentsTitle">Segments</h2>
+                <p class="inline-note">1 bloc = 1 prise</p>
+              </div>
+              <span class="loop-pill" id="loopPill">Loop off</span>
+            </div>
+            <div class="segment-list" id="segmentList" aria-live="polite"></div>
+          </section>
+
+          <section class="metrics" aria-label="Statistiques">
+            <div>
+              <span>Mots</span>
+              <strong id="wordCount">0</strong>
+            </div>
+            <div>
+              <span>Lecture</span>
+              <strong id="readingTime">0:00</strong>
+            </div>
+            <div>
+              <span>Blocs</span>
+              <strong id="blockCount">0</strong>
+            </div>
+          </section>
+
+          <section class="settings" aria-label="R&eacute;glages visuels">
+            <label class="setting-row">
+              <span>Taille texte</span>
+              <input id="fontRange" type="range" min="28" max="92" value="54" />
+              <strong><span id="fontValue">54</span>px</strong>
+            </label>
+
+            <label class="setting-row">
+              <span>Interligne</span>
+              <input id="lineHeightRange" type="range" min="115" max="190" value="142" />
+              <strong><span id="lineHeightValue">1.42</span></strong>
+            </label>
+
+            <label class="setting-row">
+              <span>Marge</span>
+              <input id="marginRange" type="range" min="4" max="18" value="9" />
+              <strong><span id="marginValue">9</span>%</strong>
+            </label>
+
+            <div class="switch-grid">
+              <label class="switch">
+                <input id="focusToggle" type="checkbox" checked />
+                <span>Rep&egrave;re focus</span>
+              </label>
+              <label class="switch">
+                <input id="contrastToggle" type="checkbox" />
+                <span>Contraste max</span>
+              </label>
+              <label class="switch">
+                <input id="tapToggle" type="checkbox" checked />
+                <span>Tap lecture</span>
+              </label>
+              <label class="switch">
+                <input id="wideToggle" type="checkbox" />
+                <span>Mode large</span>
+              </label>
+            </div>
+
+            <div class="cue-controls" aria-label="Apparence de la ligne de focus">
+              <fieldset class="cue-style-picker">
+                <legend>Ligne focus</legend>
+                <label>
+                  <input type="radio" name="cueStyle" value="soft" checked />
+                  <span>Glow</span>
+                </label>
+                <label>
+                  <input type="radio" name="cueStyle" value="solid" />
+                  <span>Trait</span>
+                </label>
+                <label>
+                  <input type="radio" name="cueStyle" value="brackets" />
+                  <span>Rep&egrave;res</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="cue-color-picker">
+                <legend>Couleur</legend>
+                <label>
+                  <input type="radio" name="cueColor" value="#ffcf3f" checked />
+                  <span style="--swatch: #ffcf3f">Jaune</span>
+                </label>
+                <label>
+                  <input type="radio" name="cueColor" value="#26d7a6" />
+                  <span style="--swatch: #26d7a6">Vert</span>
+                </label>
+                <label>
+                  <input type="radio" name="cueColor" value="#ff6b8a" />
+                  <span style="--swatch: #ff6b8a">Rose</span>
+                </label>
+                <label>
+                  <input type="radio" name="cueColor" value="#f7f2e8" />
+                  <span style="--swatch: #f7f2e8">Blanc</span>
+                </label>
+              </fieldset>
+
+              <label class="setting-row">
+                <span>Position</span>
+                <input id="cuePositionRange" type="range" min="34" max="58" value="46" />
+                <strong><span id="cuePositionValue">46</span>%</strong>
+              </label>
+
+              <label class="setting-row">
+                <span>Intensit&eacute;</span>
+                <input id="cueOpacityRange" type="range" min="20" max="100" value="72" />
+                <strong><span id="cueOpacityValue">72</span>%</strong>
+              </label>
+            </div>
+
+            <fieldset class="theme-picker">
+              <legend>Ambiance</legend>
+              <label>
+                <input type="radio" name="theme" value="studio" checked />
+                <span>Studio</span>
+              </label>
+              <label>
+                <input type="radio" name="theme" value="bubble" />
+                <span>Bubble</span>
+              </label>
+              <label>
+                <input type="radio" name="theme" value="mono" />
+                <span>Mono</span>
+              </label>
+            </fieldset>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

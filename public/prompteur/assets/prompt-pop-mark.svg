@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Prompteur Pop</title>
+  <desc id="desc">Pictogramme de prompteur avec bulle de lecture.</desc>
+  <defs>
+    <linearGradient id="screen" x1="14" x2="82" y1="18" y2="78" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffcf3f"/>
+      <stop offset=".52" stop-color="#26d7a6"/>
+      <stop offset="1" stop-color="#ff6b8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="22" fill="#11141a"/>
+  <path fill="url(#screen)" d="M21 22h54a10 10 0 0 1 10 10v32a10 10 0 0 1-10 10H53L39 86v-12H21a10 10 0 0 1-10-10V32a10 10 0 0 1 10-10Z"/>
+  <path fill="#11141a" d="M26 36h44v7H26zm0 14h36v7H26zm0 14h24v7H26z"/>
+  <circle cx="74" cy="25" r="10" fill="#fff7df"/>
+</svg>
