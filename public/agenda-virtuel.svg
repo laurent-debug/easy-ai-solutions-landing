@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+<title id="title">Agenda virtuel du Lac Souterrain — illustration</title><desc id="desc">Exemple fictif de planning avec visites confirmées, options et contrôle J-1.</desc>
+<rect width="1200" height="780" fill="#e8eee9"/><circle cx="1110" cy="65" r="280" fill="#d8e4df"/>
+<rect x="55" y="54" width="1090" height="668" rx="24" fill="#fff" stroke="#d2ddd6" stroke-width="2"/>
+<path d="M79 54h1042a24 24 0 0 1 24 24v80H55V78a24 24 0 0 1 24-24" fill="#1e293b"/>
+<circle cx="94" cy="106" r="17" fill="#879d89"/><path d="M84 107h20m-16-6 6-6 7 8" stroke="#fff" stroke-width="2" fill="none"/>
+<g font-family="Arial, sans-serif"><text x="127" y="101" fill="#fff" font-size="22" font-weight="700">LAC SOUTERRAIN</text><text x="127" y="128" fill="#c5d5ce" font-size="17">Agenda virtuel</text><text x="1098" y="112" text-anchor="end" fill="#e0e9e3" font-size="15">Illustration · données fictives</text>
+<text x="88" y="204" font-size="26" fill="#1e293b" font-weight="700">Préparer les visites, ensemble.</text>
+<rect x="88" y="230" width="700" height="42" rx="10" fill="#f3f5f3"/><text x="108" y="257" fill="#52645a" font-size="17">Planning des groupes</text>
+<rect x="88" y="298" width="700" height="348" rx="12" fill="#fafbf9" stroke="#e1e7e2"/>
+<g stroke="#e1e7e2"><path d="M88 356h700M88 436h700M88 516h700M88 596h700M180 298v348M382 298v348M584 298v348"/></g>
+<g fill="#52645a" font-size="16"><text x="205" y="333">Matin</text><text x="407" y="333">Midi</text><text x="609" y="333">Après-midi</text><text x="106" y="396">Visites</text><text x="106" y="476">Groupes</text><text x="106" y="556">Options</text></g>
+<rect x="195" y="371" width="170" height="51" rx="8" fill="#dfece1"/><text x="210" y="403" fill="#305b3c" font-size="16">Visite confirmée</text>
+<rect x="398" y="451" width="170" height="51" rx="8" fill="#dfece1"/><text x="413" y="483" fill="#305b3c" font-size="16">Groupe confirmé</text>
+<rect x="600" y="531" width="170" height="51" rx="8" fill="#fbebcc"/><text x="615" y="563" fill="#80551e" font-size="16">Option à suivre</text>
+<rect x="820" y="230" width="292" height="416" rx="12" fill="#f3f5f3"/><text x="845" y="267" font-size="20" fill="#1e293b" font-weight="700">Contrôle J-1</text><text x="845" y="298" font-size="15" fill="#52645a">Les informations au même endroit</text>
+<g fill="#fff" stroke="#cbd7ce"><rect x="845" y="330" width="25" height="25" rx="6"/><rect x="845" y="390" width="25" height="25" rx="6"/><rect x="845" y="450" width="25" height="25" rx="6"/></g>
+<path d="m851 342 5 5 9-11m-14 66 5 5 9-11" fill="none" stroke="#526f57" stroke-width="3"/>
+<g fill="#36483d" font-size="17"><text x="883" y="349">Horaires</text><text x="883" y="409">Prestations</text><text x="883" y="469">Vérifications</text></g>
+<path d="M845 512h242" stroke="#d4ddd6"/><text x="845" y="549" fill="#52645a" font-size="15">Historique des interventions</text><text x="845" y="580" fill="#52645a" font-size="15">Mails liés aux réservations</text>
+<text x="89" y="688" fill="#52645a" font-size="15">Audit → Développement → Livraison</text><text x="1110" y="688" text-anchor="end" fill="#52645a" font-size="15">Easy AI Solutions</text></g></svg>

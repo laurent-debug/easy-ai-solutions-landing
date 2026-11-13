@@ -1,18 +1,27 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import ClickAnalytics from '@/components/ClickAnalytics'
+import { projects } from '@/lib/projects'
+import { articles } from '@/lib/articles'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 const siteUrl = 'https://www.easy-ai-solutions.ch'
+const projectIds = projects.map(project => project.id)
+const analyticsPaths = [
+  '/', '/blog', '/guide-gratuit', '/guide-ia', '/prompteur', '/mentions-legales', '/politique-de-confidentialite',
+  ...projectIds.map(id => `/realisations/${id}`),
+  ...articles.map(article => `/blog/${article.slug}`),
+]
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Easy AI Solutions — L\'IA concrète pour les micro-entreprises',
+    default: 'Easy AI Solutions — IA pratique et outils métier en Suisse romande',
     template: '%s | Easy AI Solutions',
   },
-  description: 'J\'aide les entrepreneurs de 1 à 4 personnes à gagner du temps avec l\'IA. Pas de jargon, pas de théorie. Une session suffit.',
+  description: 'IA pratique, outils métier, sites web et automatisation administrative : Laurent Cornu accompagne les petites entreprises de l’audit à la livraison.',
   keywords: [
     'consultant IA Suisse romande',
     'formation intelligence artificielle Suisse',
@@ -28,11 +37,11 @@ export const metadata: Metadata = {
     locale: 'fr_CH',
     url: siteUrl,
     siteName: 'Easy AI Solutions',
-    title: 'Easy AI Solutions — L\'IA concrète pour les micro-entreprises',
-    description: 'J\'aide les entrepreneurs de 1 à 4 personnes à gagner du temps avec l\'IA. Pas de jargon, pas de théorie. Une session suffit.',
+    title: 'Easy AI Solutions — IA pratique et outils métier en Suisse romande',
+    description: 'IA pratique, outils métier, sites web et automatisation administrative : Laurent Cornu accompagne les petites entreprises de l’audit à la livraison.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Easy AI Solutions — Consultant IA pour PME en Suisse romande',
@@ -41,12 +50,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Easy AI Solutions — L\'IA concrète pour les micro-entreprises',
-    description: 'J\'aide les entrepreneurs de 1 à 4 personnes à gagner du temps avec l\'IA. Pas de jargon, pas de théorie. Une session suffit.',
-    images: ['/og-image.jpg'],
-  },
-  alternates: {
-    canonical: siteUrl,
+    title: 'Easy AI Solutions — IA pratique et outils métier en Suisse romande',
+    description: 'IA pratique, outils métier, sites web et automatisation administrative : Laurent Cornu accompagne les petites entreprises de l’audit à la livraison.',
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
@@ -69,7 +75,7 @@ const jsonLd = {
       '@id': `${siteUrl}/#business`,
       name: 'Easy AI Solutions',
       url: siteUrl,
-      description: 'Consultant en intelligence artificielle pour micro-entreprises et indépendants en Suisse romande.',
+      description: 'Accompagnement IA, audit et développement d’outils métier pour les petites entreprises et indépendants en Suisse romande.',
       areaServed: [
         { '@type': 'AdministrativeArea', name: 'Vaud', addressCountry: 'CH' },
         { '@type': 'AdministrativeArea', name: 'Genève', addressCountry: 'CH' },
@@ -78,7 +84,6 @@ const jsonLd = {
         { '@type': 'AdministrativeArea', name: 'Neuchâtel', addressCountry: 'CH' },
         { '@type': 'Country', name: 'Suisse' },
       ],
-      priceRange: 'CHF 300',
       currenciesAccepted: 'CHF',
       inLanguage: 'fr-CH',
       founder: {
@@ -91,12 +96,22 @@ const jsonLd = {
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Services IA',
+        name: 'IA, outils métier et automatisation administrative',
         itemListElement: [
           {
             '@type': 'Offer',
+            name: 'Solution métier sur mesure',
+            description: 'Audit, développement et livraison d’un outil adapté au fonctionnement de votre activité.',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Refonte et automatisation administrative',
+            description: 'Audit des parcours, refonte du site et raccordement des outils administratifs jusqu’à la livraison.',
+          },
+          {
+            '@type': 'Offer',
             name: 'Appel découverte gratuit',
-            description: 'Appel de 30 minutes pour identifier vos besoins en IA.',
+            description: 'Appel de 30 minutes pour comprendre votre besoin en IA ou en outil métier.',
             price: '0',
             priceCurrency: 'CHF',
           },
@@ -136,6 +151,7 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-navy font-sans antialiased">
         {children}
+        <ClickAnalytics publicPaths={analyticsPaths} projectIds={projectIds} configured={process.env.ANALYTICS_ENABLED === 'true'} />
       </body>
     </html>
   )

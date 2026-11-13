@@ -1,7 +1,20 @@
-export const metadata = {
-  title: 'Prompteur Pop | Easy AI Solutions',
-  description:
-    'Prompteur web mobile pour enregistrer des videos YouTube avec defilement, segments et miroir.',
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Prompteur Pop — prompteur web',
+  description: 'Prompteur web mobile pour enregistrer vos vidéos avec défilement, segments et mode miroir.',
+  alternates: { canonical: '/prompteur' },
+  openGraph: {
+    title: 'Prompteur Pop | Easy AI Solutions',
+    description: 'Prompteur web mobile avec défilement, segments et mode miroir pour vos vidéos.',
+    url: '/prompteur',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Prompteur Pop | Easy AI Solutions',
+    description: 'Prompteur web mobile avec défilement, segments et mode miroir pour vos vidéos.',
+  },
 }
 
 export default function PrompteurPage() {

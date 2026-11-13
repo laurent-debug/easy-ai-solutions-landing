@@ -3,6 +3,25 @@ import LeadMagnet from '@/components/LeadMagnet'
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Guide pratique de l’IA pour les petites entreprises",
+  description: "Téléchargez le guide pratique Easy AI Solutions : des usages concrets de l’IA pour les petites entreprises et les indépendants.",
+  alternates: { canonical: '/guide-ia' },
+  openGraph: {
+    title: "Guide pratique de l’IA pour les petites entreprises | Easy AI Solutions",
+    description: "Téléchargez le guide pratique Easy AI Solutions : des usages concrets de l’IA pour les petites entreprises et les indépendants.",
+    url: '/guide-ia',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Guide pratique de l’IA pour les petites entreprises | Easy AI Solutions",
+    description: "Téléchargez le guide pratique Easy AI Solutions : des usages concrets de l’IA pour les petites entreprises et les indépendants.",
+  },
+}
+
 export default function GuidePage() {
   return (
     <main className="min-h-screen bg-white text-navy flex flex-col items-center justify-center p-6">
