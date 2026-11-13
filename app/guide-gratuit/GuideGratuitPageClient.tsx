@@ -1,8 +1,9 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { type FormEvent, useState } from 'react'
 import Image from 'next/image'
-import { ArrowRight, Check, Download } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Download } from 'lucide-react'
 import styles from './guide-gratuit.module.css'
 
 type FormData = {
@@ -16,8 +17,6 @@ type FormErrors = {
   email?: string
   form?: string
 }
-
-type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const BREVO_FORM_ACTION =
@@ -39,7 +38,6 @@ export default function GuideGratuitPageClient() {
     emailAddressCheck: '',
   })
   const [errors, setErrors] = useState<FormErrors>({})
-  const [status, setStatus] = useState<SubmitStatus>('idle')
 
   const validateForm = () => {
     const nextErrors: FormErrors = {}
@@ -68,10 +66,6 @@ export default function GuideGratuitPageClient() {
       [field === 'prenom' || field === 'email' ? field : 'form']: undefined,
       form: undefined,
     }))
-
-    if (status === 'error') {
-      setStatus('idle')
-    }
   }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -80,25 +74,16 @@ export default function GuideGratuitPageClient() {
     if (Object.keys(nextErrors).length > 0) {
       event.preventDefault()
       setErrors(nextErrors)
-      setStatus('idle')
       return
     }
 
     if (formData.emailAddressCheck.trim()) {
       event.preventDefault()
       setErrors({})
-      setStatus('success')
       return
     }
 
     setErrors({})
-    setStatus('loading')
-  }
-
-  const handleIframeLoad = () => {
-    if (status === 'loading') {
-      setStatus('success')
-    }
   }
 
   return (
@@ -131,44 +116,14 @@ export default function GuideGratuitPageClient() {
           ))}
         </div>
 
-        {status === 'success' ? (
-          <div className={styles.success} aria-live="polite">
-            <div className={styles.successIcon}>
-              <Check aria-hidden="true" />
-            </div>
-
-            <h2 className={styles.successTitle}>
-              C&apos;est parti, <span>{formData.prenom.trim()}</span> !
-            </h2>
-
-            <p className={styles.successText}>
-              Vérifie ta boîte mail, le guide arrive dans quelques secondes.
-              Pense aussi à vérifier tes spams si tu ne le vois pas.
-            </p>
-
-            <div className={styles.successActions}>
-              <a
-                href={GUIDE_DOWNLOAD_URL}
-                download
-                className={`${styles.button} ${styles.downloadButton}`}
-              >
-                Télécharger le guide
-                <Download aria-hidden="true" />
-              </a>
-
-              <a href="https://easy-ai-solutions.ch" className={styles.successLink}>
-                Découvrir Easy AI Solutions
-              </a>
-            </div>
-          </div>
-        ) : (
-          <>
             <form
               className={styles.formArea}
               onSubmit={handleSubmit}
               method="POST"
               action={BREVO_FORM_ACTION}
-              target="guide_gratuit_iframe"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-describedby="guide-subscription-help"
               data-type="subscription"
               noValidate
             >
@@ -248,32 +203,20 @@ export default function GuideGratuitPageClient() {
 
               <button
                 type="submit"
-                className={`${styles.button} ${
-                  status === 'loading' ? styles.buttonDisabled : ''
-                }`}
-                disabled={status === 'loading'}
+                className={styles.button}
               >
-                {status === 'loading'
-                  ? 'Envoi en cours...'
-                  : 'Recevoir le guide gratuit'}
+                Recevoir le guide par e-mail
                 <ArrowRight aria-hidden="true" />
               </button>
 
-              <p className={styles.legal}>
-                Formulaire relié directement à Brevo pour contourner les
-                limitations d&apos;IP changeantes, avec protection anti-bot
-                intégrée.
+              <p id="guide-subscription-help" className={styles.legal}>
+                La réponse à votre inscription s’affiche dans un nouvel onglet.
+                Vous pouvez aussi <a href={GUIDE_DOWNLOAD_URL} download>télécharger le guide directement <Download aria-hidden="true" className="inline h-4 w-4" /></a>.
                 <br />
-                <a href="https://easy-ai-solutions.ch">easy-ai-solutions.ch</a>
+                <Link href="/politique-de-confidentialite">Confidentialité des données</Link>
               </p>
             </form>
 
-            <iframe
-              name="guide_gratuit_iframe"
-              title="Soumission du formulaire guide gratuit"
-              className={styles.hiddenIframe}
-              onLoad={handleIframeLoad}
-            />
 
             <div className={styles.divider}>
               <hr />
@@ -297,11 +240,10 @@ export default function GuideGratuitPageClient() {
                 <p>Fondateur · Easy AI Solutions</p>
               </div>
             </div>
-          </>
-        )}
+
 
         <footer className={styles.brandTag}>
-          <a href="https://easy-ai-solutions.ch">easy-ai-solutions.ch</a> ·
+          <Link href="/">easy-ai-solutions.ch</Link> ·
           Guide offert gratuitement
         </footer>
       </section>

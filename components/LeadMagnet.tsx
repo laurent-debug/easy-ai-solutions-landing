@@ -21,7 +21,7 @@ export default function LeadMagnet() {
                       <FileText className="w-6 h-6" />
                     </div>
                     <div className="text-sage font-bold text-xs tracking-widest uppercase mb-2">Guide Pratique</div>
-                    <h3 className="text-2xl font-bold leading-tight">Gagnez 5h par semaine grâce à l'IA</h3>
+                    <h3 className="text-2xl font-bold leading-tight">Gagnez 5h par semaine grâce à l&apos;IA</h3>
                   </div>
                   <div className="text-sm font-medium text-white/60">Easy AI Solutions</div>
                 </div>
@@ -44,10 +44,10 @@ export default function LeadMagnet() {
             </div>
             
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
-              Ne perdez plus votre temps à "tester" des outils.
+              Ne perdez plus votre temps à &quot;tester&quot; des outils.
             </h2>
             <p className="text-xl text-navy/70 mb-8 leading-relaxed">
-              J'ai condensé 300+ heures de recherche en un guide simple de 10 pages. 
+              J&apos;ai condensé 300+ heures de recherche en un guide simple de 10 pages.
               Découvrez exactement quels outils utiliser pour automatiser vos tâches les plus ingrates.
             </p>
 
