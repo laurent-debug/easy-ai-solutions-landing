@@ -94,7 +94,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         <div className="mx-auto max-w-3xl">
           <h2 id="blog-contact" className="text-3xl font-bold">Construisons votre solution sur mesure</h2>
           <p className="mt-5 text-lg leading-relaxed text-navy/80">Vous avez un parcours à simplifier ? Commençons par comprendre votre activité et vos besoins.</p>
-          <a href="https://calendly.com/laurent-easy-ai-solutions/30min" data-track-event="booking_click" data-track-target="calendly" data-track-placement="blog" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-4 font-bold text-navy hover:bg-accent/90">Parlons de votre projet<ArrowRight aria-hidden="true" className="h-5 w-5" /></a>
+          <a href="https://calendly.com/samamuse-ai/30min" data-track-event="booking_click" data-track-target="calendly" data-track-placement="blog" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-4 font-bold text-navy hover:bg-accent/90">Parlons de votre projet<ArrowRight aria-hidden="true" className="h-5 w-5" /></a>
           <p className="mt-4 text-sm text-navy/70">Premier échange gratuit · 30 minutes · Sans engagement</p>
         </div>
       </section>
