@@ -65,6 +65,18 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
               <div className="mt-5 space-y-5 text-lg leading-relaxed text-navy/80">
                 {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
                 {section.bullets && <ul className="list-disc space-y-3 pl-6">{section.bullets.map(item => <li key={item}>{item}</li>)}</ul>}
+                {section.links && (
+                  <ul className="space-y-3">
+                    {section.links.map(link => {
+                      const linkedProject = projects.find(project => link.href === `/realisations/${project.id}`)
+                      return (
+                        <li key={link.href}>
+                          <Link href={link.href} data-track-event={linkedProject ? 'case_study_click' : undefined} data-track-target={linkedProject?.id} data-track-placement="blog" className="font-semibold text-sage underline underline-offset-4">{link.label}</Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                )}
               </div>
             </section>
           ))}
