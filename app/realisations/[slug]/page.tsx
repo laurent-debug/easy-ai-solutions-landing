@@ -147,7 +147,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-8">Construisons votre solution sur mesure</h2>
             <p className="text-xl text-navy/70 mb-12">Un outil métier, un site web ou une automatisation : partons de votre besoin pour concevoir une solution adaptée à votre activité.</p>
-            <a href="https://calendly.com/laurent-easy-ai-solutions/30min" data-track-event="booking_click" data-track-target="calendly" data-track-placement="case_study" target="_blank" rel="noopener noreferrer" className="mb-10 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-4 font-bold text-navy hover:bg-accent/90">
+            <a href="https://calendly.com/samamuse-ai/30min" data-track-event="booking_click" data-track-target="calendly" data-track-placement="case_study" target="_blank" rel="noopener noreferrer" className="mb-10 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-4 font-bold text-navy hover:bg-accent/90">
               Parlons de votre projet <ArrowRight aria-hidden="true" className="h-5 w-5" />
             </a>
             <div className="text-left bg-slate-50 rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-xl shadow-slate-200/50">

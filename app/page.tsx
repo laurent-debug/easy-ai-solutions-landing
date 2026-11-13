@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function LandingPage() {
   const latestArticle = articles[0]
-  const calendlyUrl = "https://calendly.com/laurent-easy-ai-solutions/30min"
+  const calendlyUrl = "https://calendly.com/samamuse-ai/30min"
 
   return (
     <main className="min-h-screen bg-white text-navy selection:bg-sage/30">
