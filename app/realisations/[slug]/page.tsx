@@ -122,6 +122,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </section>
       )}
 
+      {project.caseStudy?.example && (
+        <section aria-labelledby="example-title" className="border-t border-slate-200 px-6 py-16 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 id="example-title" className="text-3xl font-bold text-navy">{project.caseStudy.example.title}</h2>
+            <ol className="mt-6 max-w-3xl list-decimal space-y-4 pl-6 text-lg leading-relaxed text-navy/80 marker:font-bold marker:text-sage">
+              {project.caseStudy.example.steps.map(step => <li key={step} className="pl-2">{step}</li>)}
+            </ol>
+          </div>
+        </section>
+      )}
+
       {/* DÉTAILS & FONCTIONNALITÉS */}
       <section className="py-24 bg-slate-50 border-y border-slate-200 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">

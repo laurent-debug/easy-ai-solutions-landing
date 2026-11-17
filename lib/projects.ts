@@ -16,6 +16,7 @@ export interface Project {
     clientUrl?: string;
     context: string;
     phases: { title: string; description: string }[];
+    example?: { title: string; steps: string[] };
   };
 }
 
@@ -98,31 +99,39 @@ export const projects: Project[] = [
   {
     id: 'fermentierra',
     title: 'Fermentierra',
-    subtitle: 'Un nouveau site et un administratif mieux relié',
-    description: 'Relier le site e-commerce et les tâches administratives d’une entreprise artisanale, du parcours client au suivi des commandes.',
-    fullDescription: 'Pour Fermentierra, la refonte du site et l’automatisation administrative font partie du même chantier : présenter les produits et les ateliers, faciliter les commandes et organiser les échanges entre la boutique, les documents et l’expédition.',
+    subtitle: 'De la boutique en ligne au suivi des commandes',
+    description: 'Pour notre entreprise artisanale, j’ai refondu la boutique en ligne, automatisé des étapes de gestion des commandes et intégré une assistante IA pour le suivi administratif.',
+    fullDescription: 'Chez Fermentierra, j’ai refondu le site et la boutique en ligne, puis relié les outils utilisés après l’achat. Les automatisations préparent les documents et les étiquettes d’expédition. Côté gestion, l’assistante IA Secretaria s’appuie sur Hermès pour rassembler les informations d’un dossier et préparer les suites à donner.',
     image: '/fermentierra-site.png',
     imageAlt: 'Bocaux de légumes fermentés Fermentierra, visuel du nouveau site',
     imageCaption: 'Visuel du nouveau site Fermentierra',
     featured: true,
     category: 'E-commerce · Automatisation administrative',
     features: [
-      'Nouveau site de présentation et de vente en ligne',
-      'Parcours en français, allemand et anglais',
-      'Mise en valeur des produits, articles et ateliers',
-      'Raccordement du suivi des commandes et des documents',
+      'Boutique en français, allemand et anglais, avec les produits, les ateliers et les articles réunis sur le même site',
+      'Suivi des commandes dans WooCommerce',
       'Préparation des documents et étiquettes d’expédition',
-      'Contrôles et validations aux étapes administratives sensibles'
+      'Raccord à Bexio pour préparer les pièces comptables des dossiers concernés',
+      'Avec Secretaria sur Hermès, rapprochement du courrier, des commandes et des justificatifs',
+      'Relecture des brouillons et validation humaine avant les envois liés aux réclamations'
     ],
     caseStudy: {
       client: 'Fermentierra',
       clientUrl: 'https://fermentierra.com/',
-      context: 'Une petite entreprise artisanale doit faire vivre son site, traiter ses commandes et préparer ses expéditions tout en continuant à produire. L’enjeu : faire communiquer les outils et organiser les tâches administratives autour du travail réel.',
+      context: 'Chez Fermentierra, le travail continue après le paiement. Il faut préparer le colis, retrouver les pièces de la commande et répondre en cas de problème de livraison. J’ai conçu la refonte autour de ces tâches, que je connais pour avoir géré moi-même les commandes de l’atelier.',
       phases: [
-        { title: 'Audit', description: 'Reprendre le parcours du client et celui d’une commande, repérer les ressaisies, les documents à produire et les moments où une validation humaine reste nécessaire.' },
-        { title: 'Développement', description: 'Refondre le site multilingue et relier les étapes administratives : boutique, commandes, documents, comptabilité et préparation des expéditions.' },
-        { title: 'Livraison', description: 'Mettre en service les parcours, vérifier les documents et les échanges entre outils, puis ajuster le fonctionnement à partir des situations rencontrées au quotidien.' }
-      ]
+        { title: 'Audit', description: 'Suivre une commande de l’achat à l’expédition pour repérer les ressaisies et les informations à retrouver quand un colis pose problème.' },
+        { title: 'Développement', description: 'Refondre la boutique multilingue, relier WooCommerce aux outils de gestion et intégrer Secretaria pour le suivi des dossiers.' },
+        { title: 'Livraison', description: 'Vérifier les documents produits et les échanges entre outils, puis ajuster les parcours à partir de situations rencontrées à l’atelier.' }
+      ],
+      example: {
+        title: 'Quand un colis arrive endommagé',
+        steps: [
+          'Secretaria rapproche le signalement de la commande WooCommerce, de sa facture et des informations d’expédition.',
+          'Elle réunit les justificatifs disponibles et prépare le brouillon dans Bexio. Si une pièce manque, le dossier attend une vérification.',
+          'Je relis le dossier avant d’autoriser l’émission du document, puis je valide séparément le message et ses pièces jointes avant l’envoi au transporteur.'
+        ]
+      }
     }
   },
   {
