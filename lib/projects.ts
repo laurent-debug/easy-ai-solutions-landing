@@ -73,8 +73,9 @@ export const projects: Project[] = [
     subtitle: 'Piloter la production, les stocks et la traçabilité',
     description: 'Un espace de travail commun pour les ateliers de fabrication : planifier, produire et suivre les matières jusqu’aux lots finis.',
     fullDescription: 'AtelierOS rassemble les outils du quotidien d’un atelier : recettes, planning, production, stocks, contrôles qualité et coûts de revient. Une plateforme métier pensée pour relier les informations et accompagner le travail de l’équipe.',
-    image: '/atelier-os.png',
-    imageAlt: 'Aperçu de la plateforme de gestion AtelierOS',
+    image: '/atelier-os-planning.webp',
+    imageAlt: 'Illustration du planning des productions AtelierOS avec des données fictives',
+    imageCaption: 'Illustration avec données fictives',
     featured: true,
     features: [
       'Planification des productions et suivi des étapes',
@@ -99,9 +100,9 @@ export const projects: Project[] = [
   {
     id: 'fermentierra',
     title: 'Fermentierra',
-    subtitle: 'De la boutique en ligne au suivi des commandes',
-    description: 'Pour notre entreprise artisanale, j’ai refondu la boutique en ligne, automatisé des étapes de gestion des commandes et intégré une assistante IA pour le suivi administratif.',
-    fullDescription: 'Chez Fermentierra, j’ai refondu le site et la boutique en ligne, puis relié les outils utilisés après l’achat. Les automatisations préparent les documents et les étiquettes d’expédition. Côté gestion, l’assistante IA Secretaria s’appuie sur Hermès pour rassembler les informations d’un dossier et préparer les suites à donner.',
+    subtitle: 'Une boutique refondue, des commandes traitées en série',
+    description: 'Chez Fermentierra, un clic lance la préparation de toute une série de commandes validées. Les workflows de modification et de remboursement limitent les interventions aux décisions et aux exceptions.',
+    fullDescription: 'Après la refonte de la boutique Fermentierra, j’ai développé des modules pour traiter les commandes WooCommerce par lots. Un clic suffit pour transmettre ensemble les bons de livraison et les factures des commandes validées à la préparation. Les workflows de modification et de remboursement enchaînent les étapes de gestion et sollicitent l’équipe aux moments où une décision ou une validation est nécessaire.',
     image: '/fermentierra-site.png',
     imageAlt: 'Bocaux de légumes fermentés Fermentierra, visuel du nouveau site',
     imageCaption: 'Visuel du nouveau site Fermentierra',
@@ -109,27 +110,27 @@ export const projects: Project[] = [
     category: 'E-commerce · Automatisation administrative',
     features: [
       'Boutique en français, allemand et anglais, avec les produits, les ateliers et les articles réunis sur le même site',
-      'Suivi des commandes dans WooCommerce',
-      'Préparation des documents et étiquettes d’expédition',
-      'Raccord à Bexio pour préparer les pièces comptables des dossiers concernés',
-      'Avec Secretaria sur Hermès, rapprochement du courrier, des commandes et des justificatifs',
-      'Relecture des brouillons et validation humaine avant les envois liés aux réclamations'
+      'Transmission en un clic des bons de livraison et des factures des commandes validées',
+      'Préparation des étiquettes d’expédition',
+      'Workflows de modification de commande et de remboursement',
+      'Raccord à Bexio et validation humaine aux étapes qui l’exigent',
+      'Secretaria sur Hermès pour rapprocher le courrier, les commandes et les justificatifs des dossiers'
     ],
     caseStudy: {
       client: 'Fermentierra',
       clientUrl: 'https://fermentierra.com/',
-      context: 'Chez Fermentierra, le travail continue après le paiement. Il faut préparer le colis, retrouver les pièces de la commande et répondre en cas de problème de livraison. J’ai conçu la refonte autour de ces tâches, que je connais pour avoir géré moi-même les commandes de l’atelier.',
+      context: 'Quand les commandes s’accumulent, ouvrir chacune pour préparer ses documents prend du temps. Une modification ou un remboursement ajoute des vérifications. J’ai conçu la refonte autour de ces tâches, que je connais pour avoir géré moi-même les commandes de l’atelier.',
       phases: [
         { title: 'Audit', description: 'Suivre une commande de l’achat à l’expédition pour repérer les ressaisies et les informations à retrouver quand un colis pose problème.' },
-        { title: 'Développement', description: 'Refondre la boutique multilingue, relier WooCommerce aux outils de gestion et intégrer Secretaria pour le suivi des dossiers.' },
+        { title: 'Développement', description: 'Refondre la boutique multilingue, développer le traitement des commandes par lots et relier WooCommerce aux outils de gestion, avec Secretaria pour le suivi des dossiers.' },
         { title: 'Livraison', description: 'Vérifier les documents produits et les échanges entre outils, puis ajuster les parcours à partir de situations rencontrées à l’atelier.' }
       ],
       example: {
-        title: 'Quand un colis arrive endommagé',
+        title: 'Préparer une série d’envois en un clic',
         steps: [
-          'Secretaria rapproche le signalement de la commande WooCommerce, de sa facture et des informations d’expédition.',
-          'Elle réunit les justificatifs disponibles et prépare le brouillon dans Bexio. Si une pièce manque, le dossier attend une vérification.',
-          'Je relis le dossier avant d’autoriser l’émission du document, puis je valide séparément le message et ses pièces jointes avant l’envoi au transporteur.'
+          'Une fois les commandes validées dans WooCommerce, je clique sur « Préparer les envois ».',
+          'Le module regroupe les bons de livraison et les factures dans un PDF et le transmet à la préparation. Un double clic ne déclenche pas de deuxième envoi.',
+          'L’équipe dispose des documents de toute la série pour préparer les colis.'
         ]
       }
     }
